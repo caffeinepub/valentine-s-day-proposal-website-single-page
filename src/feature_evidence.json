@@ -1,0 +1,100 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-update-the-proposal-initial-screen-to-a-light-playful-minimalist-aesthetic-with-a-white-or-very-light-pink-background-showing-a-cute-greeting-gif-at-the-top-centered-question-text-that-reads-exactly-will-you-be-my-valentine-and-two-centered-buttons-yes-pink-red-and-no-gray",
+      "featureTitle": "Update the proposal (initial) screen to a light, playful, minimalist aesthetic with a white or very light pink background, showing a cute greeting GIF at the top, centered question text that reads exactly \"Will you be my Valentine?\", and two centered buttons: \"Yes\" (pink/red) and \"No\" (gray).",
+      "files": [
+        "frontend/src/components/ValentineLayout.tsx",
+        "frontend/src/components/ValentineProposalView.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-no-button-click-behavior-each-click-increments-a-counter-cycles-the-no-button-label-through-an-increasingly-desperate-phrase-list-including-at-least-are-you-sure-really-think-again-last-chance-surely-not-you-re-breaking-my-heart-increases-the-yes-button-size-significantly-and-decreases-the-no-button-size-slightly-on-every-click",
+      "featureTitle": "Implement \"No\" button click behavior: each click increments a counter, cycles the \"No\" button label through an increasingly desperate phrase list (including at least: \"Are you sure?\", \"Really?\", \"Think again!\", \"Last chance!\", \"Surely not?\", \"You're breaking my heart\"), increases the \"Yes\" button size significantly, and decreases the \"No\" button size slightly on every click.",
+      "files": [
+        "frontend/src/components/ValentineProposalView.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-13"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-swap-the-main-gif-based-on-the-no-click-count-start-with-a-cute-greeting-gif-then-after-a-few-no-clicks-switch-to-a-clearly-sad-crying-animation-implement-the-gif-selection-in-frontend-state-e-g-by-swapping-the-image-src-based-on-the-counter",
+      "featureTitle": "Swap the main GIF based on the \"No\" click count: start with a cute greeting GIF, then after a few \"No\" clicks switch to a clearly sad/crying animation. Implement the GIF selection in frontend state (e.g., by swapping the image src based on the counter).",
+      "files": [
+        "frontend/src/components/ValentineProposalView.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-14"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-yes-button-success-flow-when-yes-is-clicked-replace-the-proposal-ui-with-a-success-view-that-shows-a-celebratory-gif-and-a-large-heading-that-reads-exactly-knew-you-would-say-yes-and-trigger-a-confetti-explosion-using-the-canvas-confetti-library",
+      "featureTitle": "Implement \"Yes\" button success flow: when \"Yes\" is clicked, replace the proposal UI with a success view that shows a celebratory GIF and a large heading that reads exactly \"Knew you would say yes! ❤️\", and trigger a confetti explosion using the canvas-confetti library.",
+      "files": [
+        "frontend/src/components/ValentineSuccessView.tsx",
+        "frontend/src/lib/confetti.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-15"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-cute-typography-via-google-fonts-use-pacifico-or-quicksand-and-ensure-the-layout-is-mobile-first-responsive-with-centered-content-and-buttons-across-small-screen-sizes",
+      "featureTitle": "Add cute typography via Google Fonts (use \"Pacifico\" or \"Quicksand\") and ensure the layout is mobile-first responsive with centered content and buttons across small screen sizes.",
+      "files": [
+        "frontend/index.html",
+        "frontend/src/components/ValentineLayout.tsx",
+        "frontend/src/components/ValentineProposalView.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-16"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

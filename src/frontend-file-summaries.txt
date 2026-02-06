@@ -1,0 +1,12 @@
+{
+  "frontend/src/App.tsx": "Main app component that manages state for proposal vs success view and renders both through the shared ValentineLayout wrapper.",
+  "frontend/src/main.tsx": "Application entry point that renders the App component wrapped in QueryClientProvider, with Internet Identity provider removed per non-goals.",
+  "frontend/src/index.css": "Global styles with OKLCH color system for light/playful Valentine theme (white and soft pink background), custom animations, and Quicksand/Pacifico font family declarations.",
+  "frontend/tailwind.config.js": "Tailwind configuration with Quicksand and Pacifico fonts, extended shadows, and custom animation keyframes.",
+  "frontend/src/lib/valentineAssets.ts": "Centralized constants for all Valentine's Day static asset paths from the generated images directory.",
+  "frontend/src/components/ValentineLayout.tsx": "Minimal layout wrapper with light pink gradient background, no dark overlay, and footer with caffeine.ai attribution.",
+  "frontend/src/components/ValentineProposalView.tsx": "Interactive proposal view with click-driven No button behavior that cycles through desperate phrases, dramatically grows Yes button using the provided formula, shrinks No button, and swaps GIF to sad/crying after 3 No clicks.",
+  "frontend/src/components/ValentineSuccessView.tsx": "Success screen with celebratory GIF, exact heading \"Knew you would say yes! ❤️\", and confetti explosion triggered on mount.",
+  "frontend/index.html": "HTML entry point with Google Fonts (Pacifico and Quicksand) and canvas-confetti library loaded via CDN script tag.",
+  "frontend/src/lib/confetti.ts": "Helper function that accesses canvas-confetti from window object (loaded via CDN) and encapsulates the explosion configuration for consistent celebratory effect."
+}

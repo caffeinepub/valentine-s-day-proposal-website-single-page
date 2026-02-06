@@ -1,0 +1,116 @@
+{
+  "kind": "build_request",
+  "title": "Add interactive GIF-based Valentine proposal with escalating No button + confetti success",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-12",
+      "text": "Update the proposal (initial) screen to a light, playful, minimalist aesthetic with a white or very light pink background, showing a cute greeting GIF at the top, centered question text that reads exactly \"Will you be my Valentine?\", and two centered buttons: \"Yes\" (pink/red) and \"No\" (gray).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Create a single-page interactive Valentine's Day website using HTML, CSS (Tailwind preferred), and JavaScript. The page should have a white or light pink background with a playful, minimalist aesthetic.\n1. Initial State: Display a cute greeting GIF (like a puppy or bear) at the top. Below it, centered text asking 'Will you be my Valentine?'. Below the text, two buttons: 'Yes' (pink/red) and 'No' (gray)."
+        ]
+      },
+      "acceptanceCriteria": [
+        "On first load, a greeting GIF is visible at the top of the content area.",
+        "The main question text is exactly \"Will you be my Valentine?\" (including punctuation/casing).",
+        "Two buttons labeled exactly \"Yes\" and \"No\" are visible and centered; \"Yes\" uses a pink/red treatment and \"No\" uses a gray treatment.",
+        "The overall background is white or very light pink (not dark)."
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Implement \"No\" button click behavior: each click increments a counter, cycles the \"No\" button label through an increasingly desperate phrase list (including at least: \"Are you sure?\", \"Really?\", \"Think again!\", \"Last chance!\", \"Surely not?\", \"You're breaking my heart\"), increases the \"Yes\" button size significantly, and decreases the \"No\" button size slightly on every click.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "2. The 'No' Button Logic: > - Every time the user clicks the 'No' button, the text on the 'No' button should cycle through a list of increasingly desperate phrases (e.g., 'Are you sure?', 'Really?', 'Think again!', 'Last chance!', 'Surely not?', 'You're breaking my heart').\nAdditionally, every click on 'No' should make the 'Yes' button significantly larger and the 'No' button slightly smaller.",
+          "The Scale Effect: In the CSS/JS, the Yes button size is usually calculated as fontSize = (noCount * 20) + 16 + 'px'. This ensures it eventually takes up the whole screen."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking the \"No\" button (not hover) changes its label to the next phrase in the configured list; after the final phrase, the label remains at the final phrase (or continues cycling, but behavior must be deterministic and documented in code).",
+        "After each \"No\" click, the \"Yes\" button becomes larger and the \"No\" button becomes smaller in a clearly visible way.",
+        "The \"Yes\" button scale effect uses the provided formula (or an equivalent mapping) so that size grows dramatically with the number of \"No\" clicks (e.g., font size based on noCount).",
+        "Button resizing remains usable and does not break layout on mobile (buttons remain centered and tappable)."
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "text": "Swap the main GIF based on the \"No\" click count: start with a cute greeting GIF, then after a few \"No\" clicks switch to a clearly sad/crying animation. Implement the GIF selection in frontend state (e.g., by swapping the image src based on the counter).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Change the main GIF to a 'crying' or 'sad' animation after a few 'No' clicks.",
+          "The GIF Library: The original site uses GIFs from GIPHY or Tenor. You can swap the image src in your JavaScript based on the noCount variable."
+        ]
+      },
+      "acceptanceCriteria": [
+        "At noCount=0, a greeting/cute GIF is shown.",
+        "After a defined threshold of \"No\" clicks (e.g., 3), the displayed GIF switches to a sad/crying GIF.",
+        "The GIF source changes are driven by the \"No\" click counter and are reproducible."
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "text": "Implement \"Yes\" button success flow: when \"Yes\" is clicked, replace the proposal UI with a success view that shows a celebratory GIF and a large heading that reads exactly \"Knew you would say yes! ❤️\", and trigger a confetti explosion using the canvas-confetti library.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "3. The 'Yes' Button Logic:\nWhen 'Yes' is clicked, clear the screen and show a celebratory GIF (e.g., a happy dance or hearts explosion).\nDisplay a large heading saying 'Knew you would say yes! ❤️'.\nTrigger a confetti explosion (use a library like canvas-confetti).\n\nConfetti: The \"explosion\" at the end is almost always done using the Canvas-Confetti library."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking \"Yes\" transitions to a success state without a page reload.",
+        "The success state contains a celebratory GIF and the heading text exactly \"Knew you would say yes! ❤️\".",
+        "Confetti renders and visibly explodes when entering the success state (using canvas-confetti).",
+        "The proposal UI is not visible in the success state."
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "text": "Add cute typography via Google Fonts (use \"Pacifico\" or \"Quicksand\") and ensure the layout is mobile-first responsive with centered content and buttons across small screen sizes.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "4. Responsive Design: Ensure the buttons stay centered and the layout works perfectly on mobile phones. Use Google Fonts like 'Pacifico' or 'Quicksand' for a cute look."
+        ]
+      },
+      "acceptanceCriteria": [
+        "A Google Font (Pacifico or Quicksand) is loaded via the app’s HTML head and applied to headings and/or body text.",
+        "On mobile widths, the GIF, question text, and buttons remain centered and do not overflow the viewport.",
+        "Buttons remain comfortably tappable on mobile (adequate padding/spacing)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit files under frontend/src/components/ui (shadcn/ui sources); only compose and use them.",
+    "Do not modify the Internet Identity hooks or actor wiring in immutable paths (frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx).",
+    "Keep all user-facing text in English."
+  ],
+  "nonGoals": [
+    "Do not add new backend functionality; no Motoko canister methods are required for this UI-only interaction.",
+    "Do not add third-party authentication providers (only Internet Identity is supported, but not required for this feature).",
+    "Do not implement real-time or server-synced state for button clicks; behavior is purely client-side."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

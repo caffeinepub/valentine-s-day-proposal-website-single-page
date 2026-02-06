@@ -1,0 +1,19 @@
+{
+  "backend/main.mo": "Empty Motoko actor with no methods.",
+  "feature_evidence.json": "Metadata file listing implemented features, related files, components, and test IDs for the Valentine app.",
+  "frontend-file-summaries.txt": "Prewritten summaries describing the purpose of each frontend source file.",
+  "frontend/index.css": "Global Tailwind-based style definitions with OKLCH color variables and base light/dark theme settings.",
+  "frontend/index.html": "HTML entry point loading fonts, confetti script, and mounting the React app.",
+  "frontend/src/App.tsx": "Top-level component toggling between proposal and success views inside the shared layout.",
+  "frontend/src/components/ValentineLayout.tsx": "Layout wrapper providing the pink gradient background and footer attribution.",
+  "frontend/src/components/ValentineProposalView.tsx": "Interactive proposal screen with escalating No-button behavior, dynamic button sizing, and GIF swapping.",
+  "frontend/src/components/ValentineSuccessView.tsx": "Success screen displaying a celebratory GIF, final message, and triggering confetti.",
+  "frontend/src/hooks/useActor.ts": "React hook that creates and manages a backend actor instance tied to Internet Identity state.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Full Internet Identity context provider and hook managing login state, identity loading, and auth-client behavior.",
+  "frontend/src/index.css": "Defines Tailwind layers, theme CSS variables for light/dark modes, and custom Valentine‑themed animations and fonts.",
+  "frontend/src/lib/confetti.ts": "Provides a function that triggers a timed confetti animation using the canvas‑confetti library from the window object.",
+  "frontend/src/lib/valentineAssets.ts": "Exports a constant mapping to generated Valentine‑themed image asset paths.",
+  "frontend/src/main.tsx": "Bootstraps the React app with QueryClient and Internet Identity providers and loads global styles.",
+  "frontend/tailwind.config.js": "Configures Tailwind theme extensions, color tokens sourced from CSS variables, plugins, and responsive container settings.",
+  "project_state.json": "Describes the project’s current scope, tech stack, features, generated assets, and architectural notes."
+}

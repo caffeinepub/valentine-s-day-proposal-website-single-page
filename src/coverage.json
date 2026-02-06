@@ -1,0 +1,99 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-06T21:03:37.002Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 5,
+    "implemented": 5,
+    "items": [
+      {
+        "id": "REQ-12",
+        "summary": "Update the proposal (initial) screen to a light, playful, minimalist aesthetic with a white or very light pink background, showing a cute greeting GIF at the top, centered question text that reads exactly \"Will you be my Valentine?\", and two centered buttons: \"Yes\" (pink/red) and \"No\" (gray).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/ValentineLayout.tsx",
+          "frontend/src/components/ValentineProposalView.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ValentineLayout.tsx",
+          "frontend/src/components/ValentineProposalView.tsx"
+        ]
+      },
+      {
+        "id": "REQ-13",
+        "summary": "Implement \"No\" button click behavior: each click increments a counter, cycles the \"No\" button label through an increasingly desperate phrase list (including at least: \"Are you sure?\", \"Really?\", \"Think again!\", \"Last chance!\", \"Surely not?\", \"You're breaking my heart\"), increases the \"Yes\" button size significantly, and decreases the \"No\" button size slightly on every click.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/ValentineProposalView.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ValentineProposalView.tsx"
+        ]
+      },
+      {
+        "id": "REQ-14",
+        "summary": "Swap the main GIF based on the \"No\" click count: start with a cute greeting GIF, then after a few \"No\" clicks switch to a clearly sad/crying animation. Implement the GIF selection in frontend state (e.g., by swapping the image src based on the counter).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/ValentineProposalView.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ValentineProposalView.tsx"
+        ]
+      },
+      {
+        "id": "REQ-15",
+        "summary": "Implement \"Yes\" button success flow: when \"Yes\" is clicked, replace the proposal UI with a success view that shows a celebratory GIF and a large heading that reads exactly \"Knew you would say yes! ❤️\", and trigger a confetti explosion using the canvas-confetti library.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/ValentineSuccessView.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/lib/confetti.ts",
+          "frontend/package.json"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ValentineSuccessView.tsx",
+          "frontend/src/lib/confetti.ts"
+        ]
+      },
+      {
+        "id": "REQ-16",
+        "summary": "Add cute typography via Google Fonts (use \"Pacifico\" or \"Quicksand\") and ensure the layout is mobile-first responsive with centered content and buttons across small screen sizes.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/index.html",
+          "frontend/src/index.css",
+          "frontend/src/components/ValentineProposalView.tsx",
+          "frontend/src/components/ValentineLayout.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/index.html",
+          "frontend/src/index.css",
+          "frontend/src/components/ValentineProposalView.tsx",
+          "frontend/src/components/ValentineLayout.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/index.html",
+    "frontend/src/components/ValentineLayout.tsx",
+    "frontend/src/components/ValentineProposalView.tsx",
+    "frontend/src/components/ValentineSuccessView.tsx",
+    "frontend/src/index.css",
+    "frontend/src/lib/confetti.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

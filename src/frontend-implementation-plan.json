@@ -1,0 +1,125 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Interactive Valentine proposal with escalating No button and confetti success",
+  "requirements": [
+    {
+      "id": "REQ-12",
+      "summary": "Restyle the initial proposal screen to a light, playful minimalist look with a greeting GIF, exact question text, and centered Yes/No buttons with correct color treatments.",
+      "acceptanceCriteria": [
+        "On first load, a greeting GIF is visible at the top of the content area.",
+        "The main question text is exactly \"Will you be my Valentine?\" (including punctuation/casing).",
+        "Two buttons labeled exactly \"Yes\" and \"No\" are visible and centered; \"Yes\" uses a pink/red treatment and \"No\" uses a gray treatment.",
+        "The overall background is white or very light pink (not dark)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ValentineLayout.tsx",
+          "operation": "modify",
+          "description": "Update layout styling to a white/very light pink background and remove/disable the current dark overlay + darkened background-image treatment so the app reads as light, playful, and minimalist while keeping content centered."
+        },
+        {
+          "path": "frontend/src/components/ValentineProposalView.tsx",
+          "operation": "modify",
+          "description": "Replace the current hero-image + custom text with a top greeting GIF, centered question text exactly \"Will you be my Valentine?\", and two centered buttons labeled exactly \"Yes\" (pink/red) and \"No\" (gray). Use the shadcn-ui Button component to keep button sizing/interaction consistent (Verify the component's usage instructions before implementing)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "summary": "Implement deterministic No-click escalation: phrase cycling, dramatic Yes growth, and slight No shrink per click while keeping mobile usability.",
+      "acceptanceCriteria": [
+        "Clicking the \"No\" button (not hover) changes its label to the next phrase in the configured list; after the final phrase, the label remains at the final phrase (or continues cycling, but behavior must be deterministic and documented in code).",
+        "After each \"No\" click, the \"Yes\" button becomes larger and the \"No\" button becomes smaller in a clearly visible way.",
+        "The \"Yes\" button scale effect uses the provided formula (or an equivalent mapping) so that size grows dramatically with the number of \"No\" clicks (e.g., font size based on noCount).",
+        "Button resizing remains usable and does not break layout on mobile (buttons remain centered and tappable)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ValentineProposalView.tsx",
+          "operation": "modify",
+          "description": "Switch from hover-driven behavior to click-driven No behavior: maintain a noCount counter, cycle through a phrase list that includes at least \"Are you sure?\", \"Really?\", \"Think again!\", \"Last chance!\", \"Surely not?\", \"You're breaking my heart\"; grow the Yes button dramatically using the provided fontSize formula (or equivalent mapping), and shrink the No button slightly per click. Use shadcn-ui Button for both buttons and apply sizing via style/class composition (Verify the component's usage instructions before implementing)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "summary": "Swap the main GIF from cute to sad/crying after a defined number of No clicks using frontend state tied to the No counter.",
+      "acceptanceCriteria": [
+        "At noCount=0, a greeting/cute GIF is shown.",
+        "After a defined threshold of \"No\" clicks (e.g., 3), the displayed GIF switches to a sad/crying GIF.",
+        "The GIF source changes are driven by the \"No\" click counter and are reproducible."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ValentineProposalView.tsx",
+          "operation": "modify",
+          "description": "Drive the displayed GIF src from component state: show a cute greeting GIF at noCount=0 and swap to a sad/crying GIF after a documented threshold (e.g., noCount >= 3), ensuring the swap is deterministic and based solely on noCount."
+        }
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "summary": "Implement the Yes-click success view with a celebratory GIF, exact heading text, and a canvas-confetti explosion on entry.",
+      "acceptanceCriteria": [
+        "Clicking \"Yes\" transitions to a success state without a page reload.",
+        "The success state contains a celebratory GIF and the heading text exactly \"Knew you would say yes! ❤️\".",
+        "Confetti renders and visibly explodes when entering the success state (using canvas-confetti).",
+        "The proposal UI is not visible in the success state."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ValentineSuccessView.tsx",
+          "operation": "modify",
+          "description": "Replace current success copy with a success view that includes a celebratory GIF and a large heading exactly \"Knew you would say yes! ❤️\"; trigger a canvas-confetti explosion when this view mounts (client-side) so confetti visibly renders on entry."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Confirm the existing in-app state switch (proposal -> success) occurs on Yes click without reload and that only the success view is rendered after answering."
+        },
+        {
+          "path": "frontend/src/lib/confetti.ts",
+          "operation": "create",
+          "description": "Add a small helper that encapsulates the canvas-confetti 'explosion' configuration used by the success view to keep the success component lean and the effect consistent."
+        },
+        {
+          "path": "frontend/package.json",
+          "operation": "create",
+          "description": "Add frontend dependency wiring for the canvas-confetti library so it can be imported and used by the success view."
+        }
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "summary": "Load and apply a cute Google Font (Pacifico or Quicksand) and ensure the layout remains mobile-first responsive with centered content and tappable buttons.",
+      "acceptanceCriteria": [
+        "A Google Font (Pacifico or Quicksand) is loaded via the app’s HTML head and applied to headings and/or body text.",
+        "On mobile widths, the GIF, question text, and buttons remain centered and do not overflow the viewport.",
+        "Buttons remain comfortably tappable on mobile (adequate padding/spacing)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Add Google Fonts <link> tags in the HTML head for either Pacifico or Quicksand so the font is loaded globally."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Apply the chosen Google Font to body text and/or headings (while keeping Tailwind usage) and add/adjust any minimal global typography defaults needed for a cute, readable, mobile-first presentation."
+        },
+        {
+          "path": "frontend/src/components/ValentineProposalView.tsx",
+          "operation": "modify",
+          "description": "Ensure the proposal layout is mobile-first responsive: content remains centered, buttons remain tappable with adequate padding/spacing, and dynamic resizing from No-click logic does not cause overflow on small screens. Use shadcn-ui Button composition for consistent sizing behavior (Verify the component's usage instructions before implementing)."
+        },
+        {
+          "path": "frontend/src/components/ValentineLayout.tsx",
+          "operation": "modify",
+          "description": "Adjust layout container spacing and alignment to keep the GIF/question/buttons centered and non-overflowing on small viewports, consistent with a minimalist light theme."
+        }
+      ]
+    }
+  ]
+}
